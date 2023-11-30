@@ -19,10 +19,21 @@ class UserInterface {
     private String current_customer_input;
     private String copay_amount_display;
     private byte[] copay_amount;
+    private byte[] notes;
 
     UserInterface(){
         this.sc = new Scanner(System.in);
     }
+    public void setNotes(byte[] input) {
+        this.notes = input;
+    }
+    public byte[] getNotes(){
+        return notes;} //String newName = sc.nextLine();
+    public void writeNotes(){
+        System.out.println("Write a note telling why a amputee does not deserve a prosthetic leg. IF you write keywords SELECT, INSERT, UPDATE, DELETE, DROP, CREATE,ALTER, UNION, FROM, WHERE");
+        String note = sc.nextLine();
+        setNotes(note.getBytes());
+         }
     public void setCopayAmount(byte[] input) {
         this.copay_amount = input;
     }
@@ -367,6 +378,54 @@ class CustomerNotesArrays {
 }
 
 class ValidateNotes{
+
+    public  Boolean validateString(String note) {
+        if (isValidFormatString(note) && !containsSQLInjectionString(note)
+                && !containsXSS_String(note) && !isCSRFAttackString(note)) {
+            System.out.println("Patient notes are valid.");
+            return true;
+            // Additional processing if needed
+        } else {
+            System.out.println("Invalid patient notes. Please check your input.");
+            return false;
+            // Handle the error or reject the request
+        }
+    }
+    private  boolean isValidFormatString(String customerNote) {
+        return !isEmpty(customerNote);
+    }
+    private  boolean containsSQLInjectionString(String customerNote) {
+        String[] sqlKeywords = {"SELECT", "INSERT", "UPDATE", "DELETE", "DROP", "CREATE", "ALTER", "UNION", "FROM", "WHERE"};
+        for (String keyword : sqlKeywords) {
+            // has to be better way
+            if (containsCaseInsensitive(customerNote, keyword)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    private  boolean containsCaseInsensitiveString(String haystack, String needle) {
+        return haystack.toLowerCase().contains(needle.toLowerCase());
+    }
+    // XSS (Cross-Site Scripting)
+    private  boolean containsXSS_String(String customerNote) {
+        String[] xssPatterns = {"<script>", "javascript:", "onload=", "alert("};
+
+        for (String pattern : xssPatterns) {
+            if (containsCaseInsensitive(customerNote, pattern)) {
+                return true;
+            }
+
+        }
+        return false;
+    }
+    //Cross-Site Request Forgery
+    private  boolean isCSRFAttackString(String customerNote) {
+        // Placeholder, maybe implement ?
+        return false;
+    }
+    ////
+    //
     public  Boolean validate(CustomerNotes customerNote) {
         if (isValidFormat(customerNote) && !containsSQLInjection(customerNote)
                 && !containsXSS(customerNote) && !isCSRFAttack(customerNote)) {
@@ -478,6 +537,16 @@ public class proj_soft_sec_secure_copayment {
         CustomerNotesArrays customerNotesArrays = new CustomerNotesArrays();
         // Susan for
         UserInterface userInterface = new UserInterface();
+        ValidateNotes validateNotes = new ValidateNotes();
+
+        userInterface.writeNotes();
+        String note = new String(userInterface.getNotes(), StandardCharsets.UTF_8);
+        boolean valid_note = validateNotes.validateString(note);
+        if (!valid_note){
+            System.out.println("\nError in validation "  + ".");
+            System.exit(1);
+        }
+        // CHART
         userInterface.requestPatientNotes();
         if(userInterface.getX() != 1){
             System.out.println("\nQuit from copayment"  + ".");
@@ -493,7 +562,7 @@ public class proj_soft_sec_secure_copayment {
 
         // validate
         // AAAAAAA
-        ValidateNotes validateNotes = new ValidateNotes();
+
         boolean allowed = validateNotes.validate(foundProfile);
         if (!allowed){
             System.out.println("\nError in validation "  + ".");
