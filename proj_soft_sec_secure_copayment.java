@@ -538,7 +538,7 @@ public class proj_soft_sec_secure_copayment {
         // Susan for
         UserInterface userInterface = new UserInterface();
         ValidateNotes validateNotes = new ValidateNotes();
-
+        /*
         userInterface.writeNotes();
         String note = new String(userInterface.getNotes(), StandardCharsets.UTF_8);
         boolean valid_note = validateNotes.validateString(note);
@@ -546,7 +546,10 @@ public class proj_soft_sec_secure_copayment {
             System.out.println("\nError in validation "  + ".");
             System.exit(1);
         }
-        // CHART
+         */
+
+
+        // w
         userInterface.requestPatientNotes();
         if(userInterface.getX() != 1){
             System.out.println("\nQuit from copayment"  + ".");
