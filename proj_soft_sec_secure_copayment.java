@@ -1,6 +1,7 @@
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.*;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
@@ -515,9 +516,9 @@ class ValidateNotes{
     }
 }//end of class
 
-public class proj_soft_sec_secure_copayment {
 
-    public static void main(String[] args) throws Exception {
+class Run_main_sec {
+    public  void run_program() throws Exception {
         System.out.print("Hello and welcome to secure copayment!");
         KeyGenerator keygen = KeyGenerator.getInstance("AES");
         SecretKey key = keygen.generateKey();
@@ -596,6 +597,16 @@ public class proj_soft_sec_secure_copayment {
         // can get rid of this ,maybe
         userInterface.displayProfile(foundProfile);
         userInterface.closeScanner();
+        System.out.print("Done with program");
+    }
+}
+public class proj_soft_sec_secure_copayment {
+
+
+    public static void main(String[] args) throws Exception {
+        System.out.print("Hello and welcome to secure copayment!");
+        Run_main_sec run_main_sec = new Run_main_sec();
+        run_main_sec.run_program();
         System.out.print("Done with program");
     }
 }
