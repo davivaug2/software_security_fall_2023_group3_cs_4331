@@ -512,7 +512,7 @@ class ValidateNotes{
 }//end of class
 
 
-public class copayment {
+public class ApproveCopayment {
 	public  void run_program() throws Exception {
 		System.out.print("Hello and welcome to secure copayment!");
 		KeyGenerator keygen = KeyGenerator.getInstance("AES");
