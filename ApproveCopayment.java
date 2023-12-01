@@ -1,3 +1,16 @@
+/*
+Title : ApproveCopayment.java
+Software Security
+Description : This is a Java File for ApproveCopayment use case.
+Author : David Vaughan (R#11666390)
+Date : 12/2/2023
+Version : 1.0
+Usage : run
+Notes :
+Java Version:
+=============================================================================
+ */
+
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.*;
