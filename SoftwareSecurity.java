@@ -1,3 +1,19 @@
+/*
+Title : SoftwareSecurity.java
+Software Security
+Description : This is a Java File for Software Secuirityu cs_4331  Project 1 
+Author : David	Vaughan	davivaug@ttu.edu
+Landon	Hassin	Landon.Hassin@ttu.edu
+Quinten	Bruce	qbruce@ttu.edu
+Eric	Ward	war71624@ttu.edu
+Date : 12/2/2023
+Version : 1.0
+Usage : run
+Notes :
+Java Version:
+=============================================================================
+ */
+
 import java.util.Scanner;
 import java.util.HashMap;
 import java.util.Map;
