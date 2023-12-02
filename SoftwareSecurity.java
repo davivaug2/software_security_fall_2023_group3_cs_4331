@@ -42,8 +42,8 @@ class SoftwareSecurity {
 					break;
 				case "2":
 					System.out.println("Performing 'Fill Prescription'...");
-					// FillPrescription fp = new FillPrescription();
-					// fp.run_program();
+					FillPrescription fp = new FillPrescription();
+					fp.run_program();
 					break;
 				case "3":
 					System.out.println("Performing 'Approve Copayment'...");
