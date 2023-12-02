@@ -40,22 +40,24 @@ class UserInterface_ {
     public static void EnterPatientInfo() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter patient name: ");
+        System.out.print("Enter patient name (Bob for testing): ");
         String name = scanner.nextLine();
         String res = TreatPatient.SearchPatientInfo(name);
-        System.out.println(res);
+        System.out.println("	Patient Medical Chart: "+res);
     }
     //Gathers user input for A5
     public static void SendMedicalChart() {
         Scanner scanner = new Scanner(System.in);
 
 
-        System.out.print("Enter name: ");
+        System.out.print("Enter name (Bob for testing): ");
         String name = scanner.nextLine();
-        System.out.print("Enter medical info: ");
+        System.out.print("Enter medical info (any string): ");
         String info = scanner.nextLine();
         boolean res = TreatPatient.SendMedicalChart(name, info);
-        System.out.println(res);
+        if (res) {
+        	System.out.println("	Hash Integrity check successfull! Data updated.");
+        }
     }
 
 }
@@ -103,10 +105,12 @@ class UserProfile {
     public static boolean RecieveUserProfile(String name, String info) {
     	//hash information prior to insert
         byte[] hash = HashIntegrityChart.hashString(info);
+        System.out.println("	hash value before insert: "+hash);
         String chart = PatientsMedicalChart.SetChart(name, info);
         //hash information post insert
         byte[] hash2 = HashIntegrityChart.hashString(chart);
         //compare equality of hash values to test integrity
+        System.out.println("	hash value after insert: "+hash);
         if (Arrays.equals(hash, hash2)) {
             return true;
         }
