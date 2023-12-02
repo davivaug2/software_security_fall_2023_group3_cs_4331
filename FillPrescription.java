@@ -23,6 +23,7 @@ public class FillPrescription {
   }
 }
 
+//Individual patients 
 class Patient{
   private String ssn;
   private String hiddenSSN;
@@ -80,6 +81,7 @@ class Patient{
     }
 }
 
+//Database of patient profiles
 class PatientDatabase {
     private List<Patient> patients;
 
@@ -112,7 +114,7 @@ class PatientDatabase {
     }
 }
 
-
+//Interface that pharmacist interacts with
 class PharmacistInterface{
   private String ssn;
   private int exitCode;
@@ -132,6 +134,7 @@ class PharmacistInterface{
   public int getExitCode() {
     return exitCode;
   }
+	//'frontend' that user interacts with
   public void run_program(PatientDatabase patientDatabase) throws Exception {
     do{
       System.out.println("\nWhat do you want to do?");
@@ -231,6 +234,7 @@ class PharmacistInterface{
 
 }
 
+//security class input validation
 class InputValidation{
   public static boolean validateSSN(String ssn){
     if(ssn.length() != 9 && ssn.length() != 3){
@@ -351,6 +355,7 @@ class InputValidation{
   }
 }
 
+//security class to hide sensitive information
 class HidePatientInfo{
 
   public static void hidePatientInfo(Patient patient){
