@@ -18,7 +18,7 @@ import javax.crypto.SecretKey;
 
 public class PayBill {
 
-    public static void main(String[] args) {
+    public void run_program() {
         try (UI ui = new UI()) {
             Bill bill = new Bill();
 
@@ -118,7 +118,7 @@ class UI implements AutoCloseable {
     @Override
     public void close() {
         if (scanner != null) {
-            scanner.close();
+            //scanner.close();
         }
     }
 }
@@ -161,4 +161,3 @@ class ValidatePayment {
         return true;
     }
 }
-
