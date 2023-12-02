@@ -539,10 +539,10 @@ class CustomerNotes {
      * @param code_generator The AuthorizationCodeChecker object to generate the code.
      * @return The generated authorization code.
      */
-    public String authorizeCode(AuthorizationCodeChecker code_generator) {
-        code_generator.generateNumber();
-        return code_generator.getNumber();
-    }
+    //public String authorizeCode(AuthorizationCodeChecker code_generator) {
+    //    code_generator.generateNumber();
+    //    return code_generator.getNumber();
+    //}
     /**
      * Changes the profile based on the provided choice and data.
      * @param choice The choice indicating which attribute to change.
