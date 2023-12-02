@@ -111,7 +111,8 @@ Java Version:
             phone.printMessage();
             userInterface.displayProfile(foundProfile);
             // Closing the scanner and completing the program
-            userInterface.closeScanner();
+            // closeing scnanner causes error for some reason
+            // userInterface.closeScanner();
             System.out.print("Done with program");
         }//end of function
     }//end of class
