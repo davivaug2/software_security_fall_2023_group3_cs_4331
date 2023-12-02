@@ -12,6 +12,7 @@ Java Version:
  */
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class FillPrescription {
   public  void run_program() throws Exception {
@@ -115,6 +116,7 @@ class PatientDatabase {
 class PharmacistInterface{
   private String ssn;
   private int exitCode;
+  Scanner scanner = new Scanner(System.in);
   PharmacistInterface(){
     this.ssn = null;
   }
@@ -139,7 +141,7 @@ class PharmacistInterface{
 			System.out.println("    4. Exit");
 
 			System.out.print("Enter your choice: ");
-      String ssn = System.console().readLine();
+      String ssn = scanner.nextLine();
       switch (ssn) {
         case "4":
           System.out.println("Exiting...\n");
@@ -148,7 +150,7 @@ class PharmacistInterface{
         case "3":
           System.out.println("Searching for patient...\n");
           System.out.println("Please enter patient ssn (For Testing: 111): ");
-          ssn = System.console().readLine();
+          ssn = scanner.nextLine();
           if(!InputValidation.validateSSN(ssn)){
             System.out.println("Invalid SSN");
             break;
@@ -165,9 +167,9 @@ class PharmacistInterface{
               System.out.println("Birthdate: " + patient.gethiddenBirthdate());
               System.out.println("SSN: " + patient.gethiddenSSN());
               System.out.println("\nPress enter to continue...\n");
-              System.console().readLine();
+              scanner.nextLine();
               System.out.println("Enter Patient Birthdate(MM/DD/YYYY) (For Testing: 01/01/1999): ");
-              String birthdate = System.console().readLine();
+              String birthdate = scanner.nextLine();
               if(birthdate.equals(patient.getBirthdate())){
                 System.out.println("Patient Birthdate Verified");
               }
@@ -176,9 +178,9 @@ class PharmacistInterface{
                 break;
               }
               System.out.println("Enter current date(MM/DD/YYYY): ");
-              String currentDate = System.console().readLine();
+              String currentDate = scanner.nextLine();
               System.out.println("Enter Parmacist's Name: ");
-              String pharmacistName = System.console().readLine();
+              String pharmacistName = scanner.nextLine();
               if(!InputValidation.validateAddPrescriptionHistory(birthdate, currentDate, pharmacistName)){
                 System.out.println("Invalid Input");
                 break;
@@ -203,15 +205,15 @@ class PharmacistInterface{
         case "1":
           System.out.println("Adding patient...\n");
           System.out.println("Please enter patient name: ");
-          String name = System.console().readLine();
+          String name = scanner.nextLine();
           System.out.println("Please enter patient prescription: ");
-          String prescription = System.console().readLine();
+          String prescription = scanner.nextLine();
           System.out.println("Please enter patient doctor: ");
-          String doctor = System.console().readLine();
+          String doctor = scanner.nextLine();
           System.out.println("Please enter patient ssn: ");
-          ssn = System.console().readLine();
+          ssn = scanner.nextLine();
           System.out.println("Please enter patient birthdate: ");
-          String birthdate = System.console().readLine();
+          String birthdate = scanner.nextLine();
           if(!InputValidation.validateAddPatient(name, prescription, doctor, ssn, birthdate)){
             System.out.println("Invalid Input");
             break;
